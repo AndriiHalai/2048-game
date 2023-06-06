@@ -112,3 +112,19 @@ function slideRight() {
     }
   }
 }
+
+function slideUp() {
+  for (let i = 0; i < COLUMNS; i++) {
+    let row = [];
+    for (let j = 0; j < ROWS; j++) {
+      row.push(board[j][i]);
+    }
+    row = slide(row);
+    for (let j = 0; j < ROWS; j++) {
+      board[j][i] = row[j];
+      let tile = document.getElementById(j.toString() + "-" + i.toString());
+      let num = board[j][i];
+      updateTile(tile, num);
+    }
+  }
+}
