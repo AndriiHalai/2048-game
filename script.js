@@ -43,8 +43,22 @@ function updateTile(tile, num) {
 }
 
 document.addEventListener("keyup", (e) => {
-  if (e.code == "ArrowLeft") {
-    slideLeft();
+  // if (e.code == "ArrowLeft") {
+  //   slideLeft();
+  // }
+  switch (e.code) {
+    case "ArrowLeft":
+      slideLeft();
+      break;
+    case "ArrowRight":
+      slideRight();
+      break;
+    case "ArrowUp":
+      slideUp();
+      break;
+    case "ArrowDown":
+      slideDown();
+      break;
   }
 });
 
@@ -73,6 +87,22 @@ function slideLeft() {
   for (let i = 0; i < ROWS; i++) {
     let row = board[i];
     row = slide(row);
+    board[i] = row;
+
+    for (let j = 0; j < COLUMNS; j++) {
+      let tile = document.getElementById(i.toString() + "-" + j.toString());
+      let num = board[i][j];
+      updateTile(tile, num);
+    }
+  }
+}
+
+function slideRight() {
+  for (let i = 0; i < ROWS; i++) {
+    let row = board[i];
+    row.reverse();
+    row = slide(row);
+    row.reverse();
     board[i] = row;
 
     for (let j = 0; j < COLUMNS; j++) {
