@@ -11,10 +11,10 @@ window.onload = function () {
 
 function setGame() {
   board = [
-    [2, 2, 2, 2],
-    [2, 2, 2, 2],
-    [4, 4, 8, 8],
-    [4, 4, 8, 8],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
   ];
 
   for (let i = 0; i < ROWS; i++) {
@@ -26,6 +26,37 @@ function setGame() {
       document.getElementById("board").append(tile);
     }
   }
+  addTile();
+  addTile();
+}
+
+function addTile() {
+  if (!hasZero()) {
+      return;
+  }
+  let flag = false;
+  while (!flag) {
+      let row = Math.floor(Math.random() * ROWS);
+      let column = Math.floor(Math.random() * COLUMNS);
+      if (board[row][column] == 0) {
+          board[row][column] = 2;
+          let tile = document.getElementById(row.toString() + "-" + column.toString());
+          tile.innerText = "2";
+          tile.classList.add("x2");
+          flag = true;
+      }
+  }
+}
+
+function hasZero() {
+  for (let row = 0; row < ROWS; row++) {
+      for (let column = 0; column < COLUMNS; column++) {
+          if (board[row][column] == 0) {
+              return true;
+          }
+      }
+  }
+  return false;
 }
 
 function updateTile(tile, num) {
@@ -43,23 +74,25 @@ function updateTile(tile, num) {
 }
 
 document.addEventListener("keyup", (e) => {
-  // if (e.code == "ArrowLeft") {
-  //   slideLeft();
-  // }
   switch (e.code) {
     case "ArrowLeft":
       slideLeft();
+      addTile();
       break;
     case "ArrowRight":
       slideRight();
+      addTile();
       break;
     case "ArrowUp":
       slideUp();
+      addTile();
       break;
     case "ArrowDown":
       slideDown();
+      addTile();
       break;
   }
+  document.getElementById("score").innerText = score.toString();
 });
 
 function filterZero(row) {
