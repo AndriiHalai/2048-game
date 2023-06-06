@@ -128,3 +128,21 @@ function slideUp() {
     }
   }
 }
+
+function slideDown() {
+  for (let i = 0; i < COLUMNS; i++) {
+    let row = [];
+    for (let j = 0; j < ROWS; j++) {
+      row.push(board[j][i]);
+    }
+    row.reverse();
+    row = slide(row);
+    row.reverse();
+    for (let j = 0; j < ROWS; j++) {
+      board[j][i] = row[j];
+      let tile = document.getElementById(j.toString() + "-" + i.toString());
+      let num = board[j][i];
+      updateTile(tile, num);
+    }
+  }
+}
