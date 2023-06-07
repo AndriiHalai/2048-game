@@ -2,8 +2,8 @@
 
 let board;
 let score = 0;
-let ROWS = 4;
-let COLUMNS = 4;
+const ROWS = 4;
+const COLUMNS = 4;
 
 window.onload = function () {
   setGame();
@@ -23,7 +23,7 @@ function setGame() {
       tile.id = i.toString() + "-" + j.toString();
       let num = board[i][j];
       updateTile(tile, num);
-      document.getElementById("board").append(tile);
+      document.getElementById("game-board").append(tile);
     }
   }
   addTile();
@@ -32,7 +32,8 @@ function setGame() {
 
 function addTile() {
   if (!hasZero()) {
-      return;
+    showRestartPopup();
+    return;
   }
   let flag = false;
   while (!flag) {
@@ -46,6 +47,24 @@ function addTile() {
           flag = true;
       }
   }
+}
+
+function showRestartPopup() {
+  const popup = document.createElement("div");
+  const text = document.createElement("h3");
+  const restartButton = document.createElement("button");
+
+  popup.classList.add("popup");
+  restartButton.id = "restart-button";
+  text.innerText = "Game over";
+  restartButton.innerText = "Restart";
+  popup.append(text);
+  popup.append(restartButton);
+  document.getElementById("game-board").append(popup);
+
+  restartButton.addEventListener("click", () => {
+    window.location.reload();
+  });
 }
 
 function hasZero() {
