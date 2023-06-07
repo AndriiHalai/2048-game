@@ -19,7 +19,7 @@ hr {
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items:center ;
   flex-wrap: wrap;
   position: relative;
 }
@@ -39,8 +39,8 @@ hr {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #ffffff;
-  background-color: #5f9ea0;
+  color: #FFFFFF;
+  background-color: #5F9EA0;
   border-radius: 30px;
   width: 250px;
   height: 150px;
