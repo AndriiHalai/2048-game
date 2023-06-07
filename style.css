@@ -4,6 +4,8 @@ body {
 }
 
 hr {
+  background-color: black;
+  height: 3px;
   width: 500px;
 }
 
