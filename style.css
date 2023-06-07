@@ -7,7 +7,7 @@ hr {
   width: 500px;
 }
 
-#board {
+#game-board {
   width: 400px;
   height: 400px;
 
@@ -16,7 +16,38 @@ hr {
 
   margin: 0 auto;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
+  position: relative;
+}
+
+#restart-button {
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.popup {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  background-color: #5f9ea0;
+  border-radius: 30px;
+  width: 250px;
+  height: 150px;
+}
+
+.popup h3 {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 10px;
 }
 
 .tile {
@@ -46,42 +77,42 @@ hr {
   color: white;
 }
 
-.x16{
+.x16 {
   background-color: #f59575;
   color: white;
 }
 
-.x32{
+.x32 {
   background-color: #f57c5f;
   color: white;
 }
 
-.x64{
+.x64 {
   background-color: #f65d3b;
   color: white;
 }
 
-.x128{
+.x128 {
   background-color: #edce71;
   color: white;
 }
 
-.x256{
+.x256 {
   background-color: #edcc63;
   color: white;
 }
 
-.x512{
+.x512 {
   background-color: #edc651;
   color: white;
 }
 
-.x1024{
+.x1024 {
   background-color: #eec744;
   color: white;
 }
 
-.x2048{
+.x2048 {
   background-color: #ecc230;
   color: white;
 }
